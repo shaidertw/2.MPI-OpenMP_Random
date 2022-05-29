@@ -23,7 +23,7 @@ int main(int argc, char* argv[]){
 #pragma omp parallel for private(i)
 	for (int i = 0; i < omp_get_max_threads(); ++i) {
 		int tRank = omp_get_thread_num();
-		srand((i+ 1) * (pRank + 1) ^ time(NULL));
+		srand((i+ 1) * (pRank + 1) * time(NULL));
 		int num = rand() % 1000;
 		std::cout << "I am " << i << " thread from " << pRank << " process, my random number = " << num << std::endl;
 	}
